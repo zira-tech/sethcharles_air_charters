@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String?
+  password  String
+  phone     String?
+  role      String    @default("customer")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  bookings  Booking[]
+}
+
+model Aircraft {
+  id          String     @id @default(cuid())
+  name        String
+  category    String
+  passengers  Int
+  range       Int
+  speed       Int
+  baggage     Int
+  price       Int
+  image       String?
+  features    String?
+  status      String     @default("active")
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  bookings    Booking[]
+}
+
+model Location {
+  id        String   @id @default(cuid())
+  name      String
+  code      String   @unique
+  city      String
+  airport   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  origins   Route[]  @relation("OriginLocation")
+  destinations Route[] @relation("DestinationLocation")
+}
+
+model Route {
+  id           String     @id @default(cuid())
+  originId     String
+  destinationId String
+  origin       Location   @relation("OriginLocation", fields: [originId], references: [id])
+  destination  Location   @relation("DestinationLocation", fields: [destinationId], references: [id])
+  flightTime   String
+  price        Int
+  status       String     @default("active")
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  bookings     Booking[]
+}
+
+model Booking {
+  id          String     @id @default(cuid())
+  reference   String     @unique
+  type        String     @default("booking")
+  userId      String?
+  user        User?      @relation(fields: [userId], references: [id])
+  aircraftId  String?
+  aircraft    Aircraft?  @relation(fields: [aircraftId], references: [id])
+  routeId     String?
+  route       Route?     @relation(fields: [routeId], references: [id])
+  tripType    String     @default("one-way")
+  date        DateTime?
+  returnDate  DateTime?
+  passengers  Int?
+  passengerDetails String?
+  conciergeServices String?
+  subtotal    Int?
+  taxes       Int?
+  total       Int?
+  currency    String     @default("USD")
+  status      String     @default("pending")
+  paymentStatus String  @default("pending")
+  paymentMethod String?
+  paymentRef  String?
+  notes       String?
+  contactEmail String?
+  contactPhone String?
+  contactName String?
+  tripDetails String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Setting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  quote     String
+  author    String
+  title     String
+  initials  String
+  image     String?
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
