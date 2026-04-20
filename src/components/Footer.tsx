@@ -141,9 +141,23 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-[#1F1F1F]">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[#666666] text-sm">
-              © {new Date().getFullYear()} Sethcharles Air Charters Ltd. All rights reserved.
-            </p>
+            <div className="flex flex-col md:flex-row items-center gap-2">
+              <p className="text-[#666666] text-sm">
+                © {new Date().getFullYear()} Sethcharles Air Charters Ltd. All rights reserved.
+              </p>
+              <span className="text-[#666666] text-sm hidden md:inline">•</span>
+              <p className="text-[#666666] text-sm">
+                Designed by{' '}
+                <a 
+                  href="https://zira-tech.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#C9A962] hover:text-[#E5C989] transition-colors"
+                >
+                  Zira Technologies
+                </a>
+              </p>
+            </div>
             <div className="flex gap-6">
               <Link href="#" className="text-[#666666] hover:text-[#A0A0A0] text-sm transition-colors">
                 Privacy Policy
@@ -151,7 +165,7 @@ export default function Footer() {
               <Link href="#" className="text-[#666666] hover:text-[#A0A0A0] text-sm transition-colors">
                 Terms of Service
               </Link>
-            </div>
+</div>
           </div>
         </div>
       </div>
