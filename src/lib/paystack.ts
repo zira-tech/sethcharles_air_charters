@@ -43,7 +43,7 @@ export interface PaystackVerifyResponse {
 export function generatePaystackReference(): string {
   const timestamp = Date.now();
   const random = Math.random().toString(36).substring(2, 10);
-  return `LESUS_${timestamp}_${random}`;
+  return `SETH_${timestamp}_${random}`;
 }
 
 export async function initializePaystackPayment(

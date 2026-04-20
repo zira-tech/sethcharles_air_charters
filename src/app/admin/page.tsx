@@ -38,11 +38,11 @@ const stats = [
 ];
 
 const recentBookings = [
-  { id: 'LESUS-X7K9M2', customer: 'James Mitchell', route: 'NBO → MRA', date: '2026-04-25', amount: '$12,500', status: 'Confirmed' },
-  { id: 'LESUS-P3N8L5', customer: 'Sarah Johnson', route: 'NBO → MBA', date: '2026-04-24', amount: '$8,200', status: 'Pending' },
-  { id: 'LESUS-H4R2W9', customer: 'Michael Chen', route: 'NBO → ASO', date: '2026-04-23', amount: '$9,800', status: 'Confirmed' },
-  { id: 'LESUS-K8M3N1', customer: 'Emma Williams', route: 'NBO → LAU', date: '2026-04-22', amount: '$15,200', status: 'Completed' },
-  { id: 'LESUS-Q2P5L8', customer: 'David Brown', route: 'NBO → JNB', date: '2026-04-21', amount: '$28,500', status: 'Confirmed' },
+  { id: 'SETH-X7K9M2', customer: 'James Mitchell', route: 'NBO → MRA', date: '2026-04-25', amount: '$12,500', status: 'Confirmed' },
+  { id: 'SETH-P3N8L5', customer: 'Sarah Johnson', route: 'NBO → MBA', date: '2026-04-24', amount: '$8,200', status: 'Pending' },
+  { id: 'SETH-H4R2W9', customer: 'Michael Chen', route: 'NBO → ASO', date: '2026-04-23', amount: '$9,800', status: 'Confirmed' },
+  { id: 'SETH-K8M3N1', customer: 'Emma Williams', route: 'NBO → LAU', date: '2026-04-22', amount: '$15,200', status: 'Completed' },
+  { id: 'SETH-Q2P5L8', customer: 'David Brown', route: 'NBO → JNB', date: '2026-04-21', amount: '$28,500', status: 'Confirmed' },
 ];
 
 const getStatusColor = (status: string) => {

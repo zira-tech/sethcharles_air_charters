@@ -62,10 +62,10 @@ export default function Navbar() {
             </div>
             <div>
               <span className="text-xl font-bold tracking-wider text-white font-['Playfair_Display']">
-                LESUS
+                SETHCHARLES
               </span>
               <span className="block text-[10px] tracking-[0.3em] text-[#C9A962] uppercase">
-                Private Jets
+                Air Charters Ltd
               </span>
             </div>
           </Link>

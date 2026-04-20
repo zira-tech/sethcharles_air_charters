@@ -7,7 +7,7 @@ import { User, Calendar, MapPin, Plane, Clock, ChevronRight, Settings, CreditCar
 const mockBookings = [
   {
     id: '1',
-    reference: 'LESUS-X7K9M2',
+    reference: 'SETH-X7K9M2',
     route: 'Nairobi to Masai Mara',
     date: '2026-04-25',
     status: 'upcoming',
@@ -15,7 +15,7 @@ const mockBookings = [
   },
   {
     id: '2',
-    reference: 'LESUS-P3N8L5',
+    reference: 'SETH-P3N8L5',
     route: 'Nairobi to Mombasa',
     date: '2026-03-15',
     status: 'completed',
@@ -23,7 +23,7 @@ const mockBookings = [
   },
   {
     id: '3',
-    reference: 'LESUS-H4R2W9',
+    reference: 'SETH-H4R2W9',
     route: 'Nairobi to Amboseli',
     date: '2026-02-08',
     status: 'completed',

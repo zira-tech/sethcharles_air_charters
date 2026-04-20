@@ -33,7 +33,7 @@ const steps: { id: Step; label: string }[] = [
 export default function BookPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState<Step>('details');
-  const [bookingRef, setBookingRef] = useState('LESUS-XXXXXX');
+  const [bookingRef, setBookingRef] = useState('SETH-XXXXXX');
   const [fleet, setFleet] = useState<Aircraft[]>([]);
   const [loadingAircraft, setLoadingAircraft] = useState(true);
   const [initialized, setInitialized] = useState(false);
