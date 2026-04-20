@@ -68,7 +68,7 @@ const services = [
     title: 'Cargo Services',
     subtitle: 'Freight & Logistics',
     description: 'Reliable time-critical cargo solutions across Africa and beyond. From urgent medical supplies to outsize equipment, we deliver with precision.',
-    image: 'https://images.unsplash.com/photo-1570710891163-a6ec5e6ecd30?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80',
     features: [
       'Time-critical delivery',
       'Outsize cargo handling',
