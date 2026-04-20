@@ -78,7 +78,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -96,8 +96,8 @@ export default function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 pt-16">
-        <div className="text-center max-w-5xl mx-auto mb-12">
+      <div className="relative z-10 flex flex-col justify-center items-center px-4 py-20">
+        <div className="text-center max-w-5xl mx-auto mb-8 lg:mb-12">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -154,7 +154,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl w-full"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 max-w-5xl w-full mt-4 lg:mt-0"
         >
           {services.map((service, index) => (
             <Link
