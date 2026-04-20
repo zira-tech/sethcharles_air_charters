@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown, Plane, Crown, Package, Building2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,10 +18,18 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { href: '/#services', label: 'Services' },
     { href: '/#fleet', label: 'Fleet' },
     { href: '/#routes', label: 'Routes' },
     { href: '/#about', label: 'About' },
     { href: '/#contact', label: 'Contact' },
+  ];
+
+  const services = [
+    { href: '/book', label: 'Private Charter', icon: Plane, desc: 'On-demand flights' },
+    { href: '/services/vip', label: 'VIP Services', icon: Crown, desc: 'Executive travel' },
+    { href: '/services/corporate', label: 'Corporate & Group', icon: Building2, desc: 'Team travel' },
+    { href: '/services/cargo', label: 'Cargo', icon: Package, desc: 'Freight & logistics' },
   ];
 
   return (
@@ -70,8 +79,41 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+          <div className="hidden md:flex items-center gap-6">
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={() => setIsServicesOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-sm text-[#A0A0A0] hover:text-[#C9A962] transition-colors duration-300 tracking-wide py-4">
+                Services
+                <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isServicesOpen && (
+                <div className="absolute top-full left-0 pt-2">
+                  <div className="bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl shadow-2xl overflow-hidden min-w-[280px]">
+                    {services.map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        className="flex items-center gap-3 px-4 py-3 hover:bg-[#141414] transition-colors group"
+                      >
+                        <div className="w-10 h-10 rounded-lg bg-[#1F1F1F] flex items-center justify-center group-hover:bg-[#C9A962]/20">
+                          <service.icon className="w-5 h-5 text-[#C9A962]" />
+                        </div>
+                        <div>
+                          <p className="text-white text-sm font-medium">{service.label}</p>
+                          <p className="text-[#666] text-xs">{service.desc}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {navLinks.filter(l => l.label !== 'Services').map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -116,7 +158,22 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-[#0A0A0A]/98 backdrop-blur-lg border-t border-[#C9A962]/10">
           <div className="px-4 py-6 space-y-4">
-            {navLinks.map((link) => (
+            <div className="pb-2">
+              <p className="text-[#C9A962] text-xs tracking-wider uppercase mb-2">Services</p>
+              {services.map((service) => (
+                <Link
+                  key={service.href}
+                  href={service.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center gap-3 py-2 text-[#A0A0A0] hover:text-[#C9A962]"
+                >
+                  <service.icon className="w-4 h-4" />
+                  {service.label}
+                </Link>
+              ))}
+            </div>
+            
+            {navLinks.filter(l => l.label !== 'Services').map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -135,7 +192,7 @@ export default function Navbar() {
                 +254 700 123 456
               </a>
               <Link
-                href="#book"
+                href="/book"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block mt-4 w-full text-center px-6 py-3 bg-gradient-to-r from-[#C9A962] to-[#E5C989] text-[#0A0A0A] font-semibold rounded"
               >

@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import Services from '@/components/Services';
 import QuoteWidget from '@/components/QuoteWidget';
 import Fleet from '@/components/Fleet';
 import Routes from '@/components/Routes';
@@ -14,6 +15,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
+        <Services />
         <QuoteWidget />
         <Fleet />
         <Routes />

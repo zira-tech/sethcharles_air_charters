@@ -1,24 +1,65 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Plane, Crown, Package, Building2, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 const slides = [
   {
-    image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&q=80',
-    title: 'Masai Mara',
-    subtitle: 'From the sky, witness nature\'s greatest spectacle',
+    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1920&q=80',
+    title: 'Private Charter',
+    subtitle: 'On-demand flights, any destination',
   },
   {
-    image: 'https://images.unsplash.com/photo-1580050898934-3b7498806b3c?w=1920&q=80',
-    title: 'Kenyan Coast',
-    subtitle: 'Crystal waters meet ancient Swahili culture',
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=80',
+    title: 'VIP Services',
+    subtitle: 'Executive travel with concierge-level service',
   },
   {
-    image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1920&q=80',
-    title: 'Mount Kenya',
-    subtitle: 'Africa\'s second-highest peak awaits',
+    image: 'https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=1920&q=80',
+    title: 'Corporate & Group',
+    subtitle: 'Team travel, events & executive retreats',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1559087867-ce58ebbb6771?w=1920&q=80',
+    title: 'Cargo Services',
+    subtitle: 'Time-critical freight & logistics',
+  },
+];
+
+const services = [
+  {
+    icon: Plane,
+    title: 'Private Charter',
+    description: 'On-demand flights with flexible scheduling to any destination',
+    cta: 'Get a Quote',
+    link: '/book',
+    color: 'from-[#C9A962] to-[#E5C989]',
+  },
+  {
+    icon: Crown,
+    title: 'VIP Services',
+    description: 'Executive travel with concierge-level service and luxury amenities',
+    cta: 'Request Concierge',
+    link: '/services/vip',
+    color: 'from-purple-600 to-purple-800',
+  },
+  {
+    icon: Building2,
+    title: 'Corporate & Group',
+    description: 'Team travel, corporate events, and executive retreats',
+    cta: 'Corporate Account',
+    link: '/services/corporate',
+    color: 'from-blue-600 to-blue-800',
+  },
+  {
+    icon: Package,
+    title: 'Cargo',
+    description: 'Time-critical freight and outsize cargo logistics',
+    cta: 'Request Cargo Quote',
+    link: '/services/cargo',
+    color: 'from-emerald-600 to-emerald-800',
   },
 ];
 
@@ -51,26 +92,26 @@ export default function Hero() {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/60 via-[#0A0A0A]/40 to-[#0A0A0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/70 via-[#0A0A0A]/50 to-[#0A0A0A]" />
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4">
-        <div className="text-center max-w-4xl mx-auto">
+      <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 pt-16">
+        <div className="text-center max-w-5xl mx-auto mb-12">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-[#C9A962] tracking-[0.4em] text-sm mb-6 uppercase"
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-[#C9A962] tracking-[0.4em] text-sm mb-4 uppercase"
           >
-            Premium Private Jet Charter
+            Premium Aviation Services
           </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 font-['Playfair_Display']"
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 font-['Playfair_Display']"
           >
             <span className="text-white">Your Africa.</span>
             <br />
@@ -82,16 +123,16 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-            className="text-xl md:text-2xl text-[#A0A0A0] mb-12 font-['Cormorant_Garamond'] italic"
+            transition={{ delay: 0.7, duration: 0.8 }}
+            className="text-lg md:text-xl text-[#A0A0A0] mb-8 font-['Cormorant_Garamond'] italic"
           >
-            From the savanna to the sea, without compromise
+            Private Jet Charter • VIP Services • Corporate & Group • Cargo
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.8 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <button
@@ -110,19 +151,47 @@ export default function Hero() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1, duration: 0.8 }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl w-full"
         >
-          <button
-            onClick={scrollToQuote}
-            className="animate-bounce text-[#C9A962] hover:text-[#E5C989] transition-colors"
-          >
-            <ChevronDown className="w-8 h-8" />
-          </button>
+          {services.map((service, index) => (
+            <Link
+              key={service.title}
+              href={service.link}
+              className="group bg-[#0A0A0A]/80 backdrop-blur-sm border border-[#1F1F1F] hover:border-[#C9A962]/50 rounded-xl p-4 transition-all duration-300 hover:transform hover:scale-105"
+            >
+              <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-3`}>
+                <service.icon className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-white font-semibold text-sm mb-1 group-hover:text-[#C9A962] transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-[#666] text-xs mb-3 line-clamp-2">
+                {service.description}
+              </p>
+              <span className="text-[#C9A962] text-xs flex items-center gap-1 group-hover:gap-2 transition-all">
+                {service.cta} <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+          ))}
         </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <button
+          onClick={scrollToQuote}
+          className="animate-bounce text-[#C9A962] hover:text-[#E5C989] transition-colors"
+        >
+          <ChevronDown className="w-8 h-8" />
+        </button>
+      </motion.div>
 
       <div className="absolute bottom-12 left-8 z-20 hidden lg:block">
         <AnimatePresence mode="wait">
